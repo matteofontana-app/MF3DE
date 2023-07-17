@@ -14,10 +14,10 @@ struct AddNewModelView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
+            VStack(spacing: 0){
                 
                 //Top Bar
-                HStack{
+                HStack(alignment: .center){
                     Button(action: {
                         //Open Add New Model Menu
                         showModalAddModel = false
@@ -38,9 +38,9 @@ struct AddNewModelView: View {
                     }) {
                        Image("Save")
                             .resizable()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 27, height: 27)
                     }
-                    .frame(width: 25, height: 25)
+                    .frame(width: 27, height: 27)
                 }
                 
                 //Content
@@ -172,6 +172,55 @@ struct AddNewModelView: View {
                                 .frame(height: 140)
                                 .padding(.bottom, 17)
                                 
+                                ZStack{
+                                    Color.gray.opacity(0.2)
+                                    VStack{
+                                        HStack {
+                                            Text("Tags:")
+                                                .font(.body)
+                                            Spacer()
+                                            Button(action: {
+                                                //Open Add New Model Menu
+                                            }) {
+                                               Image("Edit")
+                                                    .resizable()
+                                                    .frame(width: 20, height: 20)
+                                            }
+                                            .frame(width: 35, height: 35)
+                                            .opacity(0.5)
+                                            .disabled(true)
+                                        }
+                                        Spacer()
+                                        HStack {
+                                            Text("New:")
+                                            Spacer()
+                                                .bold()
+                                        }
+                                        ZStack {
+                                            Color.white
+                                            HStack {
+                                                Text("Name")
+                                                Spacer()
+                                                Text("(0/15)")
+                                                Rectangle()
+                                                    .frame(width: 25, height: 25)
+                                                Button(action: {
+                                                    //Open Add New Model Menu
+                                                }) {
+                                                   Image("Save")
+                                                        .resizable()
+                                                        .frame(width: 25, height: 25)
+                                                }
+                                                .frame(width: 35, height: 35)
+                                            }
+                                            .padding()
+                                        }
+                                    }
+                                    .padding()
+                                }
+                                .frame(height: 170)
+                                .padding(.bottom, 17)
+                                
                                 Spacer()
                             }
                             .padding(.leading, 10)
@@ -276,11 +325,20 @@ struct AddNewModelView: View {
                                                                     Rectangle()
                                                                         .fill(Color.black)
                                                                         .frame(width: (geometry.size.width-50)/3, height: (geometry.size.width-50)/3)
-                                                                    
-                                                                    Circle()
-                                                                        .fill(Color.gray)
-                                                                        .frame(width: 30, height: 30)
-                                                                        .offset(x: +(geometry.size.width-50)/6, y: -(geometry.size.width-50)/6)
+                                                                    Button(action: {
+                                                                        //Open Add New Model Menu
+                                                                    }) {
+                                                                        ZStack {
+                                                                            Circle()
+                                                                                .fill(Color.gray)
+                                                                            .frame(width: 30, height: 30)
+                                                                            Image("Cross")
+                                                                                .resizable()
+                                                                                .frame(width: 17, height: 17)
+                                                                        }
+                                                                    }
+                                                                    .frame(width: 30, height: 30)
+                                                                    .offset(x: +(geometry.size.width-50)/6, y: -(geometry.size.width-50)/6)
                                                                 }
                                                             }
                                                         }
@@ -302,6 +360,7 @@ struct AddNewModelView: View {
                             .padding(.bottom, 17)
                             
                             ZStack{
+                                Color.gray.opacity(0.2)
                                 VStack{
                                     HStack {
                                         Text("Tags:")
@@ -337,7 +396,7 @@ struct AddNewModelView: View {
                                             }) {
                                                Image("Save")
                                                     .resizable()
-                                                    .frame(width: 20, height: 20)
+                                                    .frame(width: 25, height: 25)
                                             }
                                             .frame(width: 35, height: 35)
                                         }
@@ -345,7 +404,6 @@ struct AddNewModelView: View {
                                     }
                                 }
                                 .padding()
-                                Color.gray.opacity(0.2)
                             }
                             .frame(height: 150)
                             .padding(.bottom, 17)

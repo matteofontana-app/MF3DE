@@ -14,7 +14,7 @@ struct CollectionView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
+            VStack(spacing: 0){
                 HStack{
                     Button(action: {
                         //Open Add New Model Menu
@@ -27,13 +27,34 @@ struct CollectionView: View {
                     .frame(width: 25, height: 25)
                     Spacer()
                 }
+                .padding(.bottom, 15)
                 HStack{
                     Text("COLLECTION")
                         .font(.largeTitle)
+                        .bold()
                     Spacer()
                 }
+                .padding(.bottom, 10)
+                HStack{
+                    ZStack {
+                        Color.gray.opacity(0.2)
+                        HStack {
+                            Image("Search")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Search")
+                            Spacer()
+                        }
+                        .padding(8)
+                    }
+                    Image("Filter")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }
             }
-            .padding()
+            .padding(.bottom)
+            .padding(.trailing)
+            .padding(.leading, (sizeClass == .compact ? 10 : 0))
             .padding(.top, (sizeClass == .compact ? 10 : 0))
         }
     }

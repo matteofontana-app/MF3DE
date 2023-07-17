@@ -14,7 +14,7 @@ struct ProfileView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
+            VStack(spacing: 0){
                 HStack{
                     Button(action: {
                         //Open Add New Model Menu
