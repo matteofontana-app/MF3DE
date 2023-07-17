@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.verticalSizeClass) var sizeClass
     
-    @State private var showModalLibrary = false
+    @State private var showModalCollection = false
     @State private var showModalProfile = false
-    @State private var showModalHelp = false
+    @State private var showModalGuide = false
     @State private var showModalAddModel = false
     
     var body: some View {
@@ -27,15 +27,18 @@ struct ContentView: View {
                         //Button for Guide Menu
                         Button(action: {
                             //Open Guide Menu
-                            showModalHelp = true
+                            showModalGuide = true
                         }) {
                            Image("Question")
                                 .resizable()
                                 .frame(width: 35, height: 35)
-                        }.frame(width: 35, height: 35)
+                        }
+                        .frame(width: 35, height: 35)
                         .padding(.trailing, (sizeClass == .compact ? 30 : 20))
-                        .fullScreenCover(isPresented: $showModalHelp) {
-                            GuideView()
+                        .fullScreenCover(isPresented: $showModalGuide) {
+                            GuideView(
+                                showModalGuide: self.$showModalGuide
+                            )
                         }
                         
                         //Button for Add New Model Menu
@@ -48,8 +51,10 @@ struct ContentView: View {
                                 .frame(width: 35, height: 35)
                         }
                         .frame(width: 35, height: 35)
-                        .fullScreenCover(isPresented: $showModalHelp) {
-                            GuideView()
+                        .fullScreenCover(isPresented: $showModalAddModel) {
+                            AddNewModelView(
+                                showModalAddModel: self.$showModalAddModel
+                            )
                         }
                         
                     }
@@ -62,13 +67,18 @@ struct ContentView: View {
                         
                         Button(action: {
                             //action to open library menu
-                            showModalLibrary = true
+                            showModalCollection = true
                         }) {
-                           Image("Library")
+                           Image("Collection")
                                 .resizable()
                                 .frame(width: 35, height: 35)
-                        }.frame(width: 35, height: 35)
-                        
+                        }
+                        .frame(width: 35, height: 35)
+                        .fullScreenCover(isPresented: $showModalCollection) {
+                            CollectionView(
+                                showModalCollection: self.$showModalCollection
+                            )
+                        }
                         
                         Spacer()
                         Circle()
@@ -82,7 +92,13 @@ struct ContentView: View {
                            Image("Person")
                                 .resizable()
                                 .frame(width: 35, height: 35)
-                        }.frame(width: 35, height: 35)
+                        }
+                        .frame(width: 35, height: 35)
+                        .fullScreenCover(isPresented: $showModalProfile) {
+                            ProfileView(
+                                showModalProfile: self.$showModalProfile
+                            )
+                        }
                         
                         Spacer()
                             .frame(width: sizeClass == .compact ? 0 : 20 ,height: sizeClass == .compact ? 0 : 20)

@@ -8,13 +8,39 @@
 import SwiftUI
 
 struct CollectionView: View {
+    @Environment(\.verticalSizeClass) var sizeClass
+    
+    @Binding var showModalCollection: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+            VStack{
+                HStack{
+                    Button(action: {
+                        //Open Add New Model Menu
+                        showModalCollection = false
+                    }) {
+                       Image("Cross")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                    }
+                    .frame(width: 25, height: 25)
+                    Spacer()
+                }
+                HStack{
+                    Text("COLLECTION")
+                        .font(.largeTitle)
+                    Spacer()
+                }
+            }
+            .padding()
+            .padding(.top, (sizeClass == .compact ? 10 : 0))
+        }
     }
 }
 
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionView()
+        CollectionView(showModalCollection: .constant(true))
     }
 }
