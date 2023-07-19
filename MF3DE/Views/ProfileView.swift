@@ -27,14 +27,18 @@ struct ProfileView: View {
                     .frame(width: 25, height: 25)
                     Spacer()
                 }
+                .padding(.bottom, 15)
                 HStack{
                     Text("PROFILE")
                         .font(.largeTitle)
+                        .bold()
                     Spacer()
-                }
+                }.padding(.bottom, 10)
             }
-            .padding()
-            .padding(.top, (sizeClass == .compact ? 10 : 0))
+            .padding(.bottom)
+            .padding(.trailing)
+            .padding(.leading, (sizeClass == .compact ? 10 : 20))
+            .padding(.top, (sizeClass == .compact ? 20 : 10))
         }
     }
 }

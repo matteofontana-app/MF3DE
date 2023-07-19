@@ -30,6 +30,7 @@ struct AddNewModelView: View {
                     Spacer()
                     Text("Add new model")
                         .font(.body)
+                        .bold()
                     Spacer()
                     Button(action: {
                         //Open Add New Model Menu
@@ -42,6 +43,7 @@ struct AddNewModelView: View {
                     }
                     .frame(width: 27, height: 27)
                 }
+                .padding(.bottom, 15)
                 
                 //Content
                 VStack{
@@ -416,8 +418,10 @@ struct AddNewModelView: View {
                 }
                 .padding(.top, 25)
             }
-            .padding()
-            .padding(.top, (sizeClass == .compact ? 10 : 0))
+            .padding(.bottom)
+            .padding(.trailing)
+            .padding(.leading, (sizeClass == .compact ? 10 : 20))
+            .padding(.top, (sizeClass == .compact ? 20 : 10))
         }
     }
 }

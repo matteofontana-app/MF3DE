@@ -22,6 +22,7 @@ struct ContentView: View {
                     HStack {
                         Text("MF3DE")
                             .font(.largeTitle)
+                            .bold()
                         Spacer()
                         
                         //Button for Guide Menu

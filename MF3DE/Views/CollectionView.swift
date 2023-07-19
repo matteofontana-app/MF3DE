@@ -54,8 +54,8 @@ struct CollectionView: View {
             }
             .padding(.bottom)
             .padding(.trailing)
-            .padding(.leading, (sizeClass == .compact ? 10 : 0))
-            .padding(.top, (sizeClass == .compact ? 10 : 0))
+            .padding(.leading, (sizeClass == .compact ? 10 : 20))
+            .padding(.top, (sizeClass == .compact ? 20 : 10))
         }
     }
 }
